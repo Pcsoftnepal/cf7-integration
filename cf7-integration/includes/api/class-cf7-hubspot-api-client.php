@@ -2,8 +2,8 @@
 /** 
  * Class for handling HubSpot API communications
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -12,9 +12,9 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_API_Client
+ * Class CF7_API_Client
  */
-class CF7_HubSpot_API_Client {
+class CF7_API_Client {
 
     /**
      * HubSpot API base URL
@@ -52,7 +52,7 @@ class CF7_HubSpot_API_Client {
      * @return array
      */
     public function send_request($endpoint, $data = array(), $method = 'POST') {
-        $api_key = CF7_HubSpot_Settings::get_api_key();
+        $api_key = CF7_Settings::get_api_key();
         
         if (empty($api_key)) {
             return array(
