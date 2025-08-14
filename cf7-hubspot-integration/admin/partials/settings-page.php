@@ -1,5 +1,5 @@
 <?php
-/**
+/** 
  * Display the settings page
  *
  * @package    CF7_HubSpot_Integration
@@ -10,9 +10,8 @@
 if (!defined('WPINC')) {
     die;
 }
-?>
 
-<div class="wrap">
+?><div class="wrap">
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
     
     <?php if (isset($_GET['settings-updated'])): ?>
@@ -58,6 +57,36 @@ if (!defined('WPINC')) {
                 <td>
                     <input type="text" name="cf7_hubspot_contact_list_id" value="<?php echo esc_attr(get_option('cf7_hubspot_contact_list_id')); ?>" class="regular-text" />
                     <p class="description"><?php _e('Enter the default HubSpot contact list ID to subscribe contacts to.', 'cf7-hubspot-integration'); ?></p>
+                </td>
+            </tr>
+            
+            <tr valign="top">
+                <th scope="row"><?php _e('Custom HubSpot Fields', 'cf7-hubspot-integration'); ?></th>
+                <td>
+                    <p class="description"><?php _e('Configure custom field mappings between Contact Form 7 and HubSpot.', 'cf7-hubspot-integration'); ?></p>
+                    <table class="widefat">
+                        <thead>
+                            <tr>
+                                <th><?php _e('Contact Form 7 Field', 'cf7-hubspot-integration'); ?></th>
+                                <th><?php _e('HubSpot Property', 'cf7-hubspot-integration'); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="cf7_hubspot_custom_field_1" value="<?php echo esc_attr(get_option('cf7_hubspot_custom_field_1', '')); ?>" placeholder="e.g. custom_field_1" /></td>
+                                <td><input type="text" name="cf7_hubspot_custom_field_1_mapping" value="<?php echo esc_attr(get_option('cf7_hubspot_custom_field_1_mapping', '')); ?>" placeholder="e.g. custom_field_1" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="cf7_hubspot_custom_field_2" value="<?php echo esc_attr(get_option('cf7_hubspot_custom_field_2', '')); ?>" placeholder="e.g. custom_field_2" /></td>
+                                <td><input type="text" name="cf7_hubspot_custom_field_2_mapping" value="<?php echo esc_attr(get_option('cf7_hubspot_custom_field_2_mapping', '')); ?>" placeholder="e.g. custom_field_2" /></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="cf7_hubspot_custom_field_3" value="<?php echo esc_attr(get_option('cf7_hubspot_custom_field_3', '')); ?>" placeholder="e.g. custom_field_3" /></td>
+                                <td><input type="text" name="cf7_hubspot_custom_field_3_mapping" value="<?php echo esc_attr(get_option('cf7_hubspot_custom_field_3_mapping', '')); ?>" placeholder="e.g. custom_field_3" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="description"><?php _e('Map Contact Form 7 fields to custom HubSpot properties.', 'cf7-hubspot-integration'); ?></p>
                 </td>
             </tr>
             

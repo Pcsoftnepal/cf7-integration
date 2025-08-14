@@ -15,7 +15,7 @@ if (!defined('WPINC')) {
  * Class CF7_HubSpot_Logger
  */
 class CF7_HubSpot_Logger {
-
+    
     /**
      * Log file name
      */

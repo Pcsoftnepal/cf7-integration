@@ -1,5 +1,5 @@
 <?php
-/**
+/** 
  * Class for mapping form fields to HubSpot contact properties
  *
  * @package    CF7_HubSpot_Integration
@@ -15,7 +15,7 @@ if (!defined('WPINC')) {
  * Class CF7_HubSpot_Data_Mapper
  */
 class CF7_HubSpot_Data_Mapper {
-
+    
     /**
      * Initialize the class and set its properties
      */
@@ -130,5 +130,31 @@ class CF7_HubSpot_Data_Mapper {
         }
         
         return $errors;
+    }
+    
+    /**
+     * Get all available HubSpot properties including custom fields
+     * 
+     * @return array
+     */
+    public static function get_all_hubspot_properties() {
+        // Combine default properties with custom fields
+        $default_properties = self::get_default_field_mappings();
+        $custom_properties = CF7_HubSpot_Custom_Field_Manager::get_custom_fields_from_hubspot();
+        
+        // Merge custom properties with default ones
+        $all_properties = array_merge($default_properties, array_keys($custom_properties));
+        
+        // Return as associative array with labels
+        $properties = array();
+        foreach ($default_properties as $form_field => $hubspot_prop) {
+            $properties[$hubspot_prop] = $hubspot_prop;
+        }
+        
+        foreach ($custom_properties as $prop_name => $prop_details) {
+            $properties[$prop_name] = $prop_details['label'];
+        }
+        
+        return $properties;
     }
 }
