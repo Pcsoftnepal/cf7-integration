@@ -53,10 +53,12 @@ function cf7_integration_render_addon_management_field() {
         $is_active = in_array($addon_name, $active_addons);
         $status_text = $is_active ? __('Active', 'cf7-integration') : __('Inactive', 'cf7-integration');
         $status_class = $is_active ? 'active' : 'inactive';
+        $source_text = $addon_info['source'] === 'external_plugin' ? __('External Plugin', 'cf7-integration') : __('Main Plugin', 'cf7-integration');
         
         echo '<div class="cf7-addon-item">';
         echo '<div class="cf7-addon-header">';
         echo '<span class="cf7-addon-name">' . esc_html($addon_info['name']) . '</span>';
+        echo '<span class="cf7-addon-source">(' . esc_html($source_text) . ')</span>';
         echo '<span class="cf7-addon-status ' . esc_attr($status_class) . '">' . esc_html($status_text) . '</span>';
         echo '</div>';
         
@@ -91,11 +93,15 @@ function cf7_integration_render_addon_management_field() {
         }
         .cf7-addon-header {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
+            align-items: center;
+            gap: 10px;
         }
         .cf7-addon-name {
             font-weight: bold;
+        }
+        .cf7-addon-source {
+            font-size: 0.9em;
+            color: #666;
         }
         .cf7-addon-status.active {
             color: green;

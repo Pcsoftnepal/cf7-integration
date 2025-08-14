@@ -38,3 +38,12 @@ function handle_addon_deactivation_from_admin_post() {
         exit;
     }
 }
+
+// For handling addon activation and deactivation from external plugins
+function cf7_integration_register_external_addon($addon_name, $addon_info) {
+    // This function can be used by external plugins to register their addons
+    add_filter('cf7_integration_external_addons', function($addons) use ($addon_name, $addon_info) {
+        $addons[$addon_name] = $addon_info;
+        return $addons;
+    });
+}
