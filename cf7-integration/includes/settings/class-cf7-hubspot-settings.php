@@ -2,8 +2,8 @@
 /** 
  * Class responsible for managing plugin settings
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -12,9 +12,9 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_Settings
+ * Class CF7_Settings
  */
-class CF7_HubSpot_Settings {
+class CF7_Settings {
 
     /**
      * Initialize the class and set its properties

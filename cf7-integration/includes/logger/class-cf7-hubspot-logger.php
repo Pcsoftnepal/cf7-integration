@@ -2,8 +2,8 @@
 /** 
  * Class for logging HubSpot integration activities
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -12,14 +12,14 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_Logger
+ * Class CF7_Logger
  */
-class CF7_HubSpot_Logger {
+class CF7_Logger {
     
     /**
      * Log file name
      */
-    const LOG_FILE = 'cf7-hubspot-integration.log';
+    const LOG_FILE = 'cf7-integration.log';
 
     /**
      * Initialize the class and set its properties
@@ -58,7 +58,7 @@ class CF7_HubSpot_Logger {
      * @return void
      */
     private function write_log($message, $level = 'INFO') {
-        if (!CF7_HubSpot_Settings::is_logging_enabled()) {
+        if (!CF7_Settings::is_logging_enabled()) {
             return;
         }
 
@@ -120,14 +120,14 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_Logger
+ * Class CF7_Logger
  */
-class CF7_HubSpot_Logger {
+class CF7_Logger {
 
     /**
      * Log file name
      */
-    const LOG_FILE = 'cf7-hubspot-integration.log';
+    const LOG_FILE = 'cf7-integration.log';
 
     /**
      * Initialize the class and set its properties
@@ -166,7 +166,7 @@ class CF7_HubSpot_Logger {
      * @return void
      */
     private function write_log($message, $level = 'INFO') {
-        if (!CF7_HubSpot_Settings::is_logging_enabled()) {
+        if (!CF7_Settings::is_logging_enabled()) {
             return;
         }
 

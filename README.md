@@ -1,44 +1,45 @@
-# Contact Form 7 to HubSpot Integration
+# Contact Form 7 Integration
 
-A WordPress plugin that integrates Contact Form 7 with HubSpot to send form submissions to HubSpot contacts.
+A WordPress plugin that integrates Contact Form 7 with various services.
 
 ## Features
 
 - Seamless integration with Contact Form 7
-- Sends form data to HubSpot as contacts
-- Supports adding contacts to HubSpot lists
+- Sends form data to external services as contacts
+- Supports adding contacts to external services lists
 - Configurable field mappings
-- Custom HubSpot field support
+- Custom field support
+- Modular framework for easy addon development
 - Logging and debugging capabilities
 - OAuth 2.0 authentication support
 
 ## Installation
 
-1. Upload the plugin files to the `/wp-content/plugins/cf7-hubspot-integration` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/cf7-integration` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Navigate to "Settings" > "HubSpot Integration" to configure the plugin.
+3. Navigate to "Settings" > "Contact Form 7 Integration" to configure the plugin.
 
 ## Configuration
 
 ### Prerequisites
 
-Before configuring the plugin, you need to set up a HubSpot account and create an app in the HubSpot developer portal.
+Before configuring the plugin, you need to set up a service account and create an app in the service developer portal.
 
 ### Settings
 
-1. Go to "Settings" > "HubSpot Integration"
-2. Enter your HubSpot Client ID and Client Secret (obtained from your HubSpot app)
-3. Click "Connect to HubSpot" to authenticate via OAuth
-4. Configure field mappings between Contact Form 7 fields and HubSpot properties
-5. Optionally configure custom HubSpot field mappings
+1. Go to "Settings" > "Contact Form 7 Integration"
+2. Enter your service Client ID and Client Secret (obtained from your service app)
+3. Click "Connect to service" to authenticate via OAuth
+4. Configure field mappings between Contact Form 7 fields and service properties
+5. Optionally configure custom field mappings
 6. Optionally enable logging for debugging purposes
 7. Optionally enable debug mode for detailed error information
 
 ## Field Mapping
 
-By default, the plugin maps the following Contact Form 7 fields to HubSpot properties:
+By default, the plugin maps the following Contact Form 7 fields to service properties:
 
-| Contact Form 7 Field | HubSpot Property |
+| Contact Form 7 Field | Service Property |
 |---------------------|------------------|
 | email               | email            |
 | first_name          | firstname        |
@@ -52,7 +53,7 @@ By default, the plugin maps the following Contact Form 7 fields to HubSpot prope
 | zip                 | zip              |
 | country             | country          |
 
-Custom field mappings can be configured in the settings page under the "Custom HubSpot Fields" section.
+Custom field mappings can be configured in the settings page under the "Custom Fields" section.
 
 ## Logging
 

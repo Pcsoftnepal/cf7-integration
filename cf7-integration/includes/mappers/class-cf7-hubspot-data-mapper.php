@@ -2,8 +2,8 @@
 /** 
  * Class for mapping form fields to HubSpot contact properties
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -12,9 +12,9 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_Data_Mapper
+ * Class CF7_Data_Mapper
  */
-class CF7_HubSpot_Data_Mapper {
+class CF7_Data_Mapper {
     
     /**
      * Initialize the class and set its properties
@@ -125,7 +125,7 @@ class CF7_HubSpot_Data_Mapper {
         
         foreach ($required_properties as $property) {
             if (!isset($properties[$property]) || empty($properties[$property])) {
-                $errors[] = sprintf(__('Missing required property: %s', 'cf7-hubspot-integration'), $property);
+                $errors[] = sprintf(__('Missing required property: %s', 'cf7-integration'), $property);
             }
         }
         
@@ -140,7 +140,7 @@ class CF7_HubSpot_Data_Mapper {
     public static function get_all_hubspot_properties() {
         // Combine default properties with custom fields
         $default_properties = self::get_default_field_mappings();
-        $custom_properties = CF7_HubSpot_Custom_Field_Manager::get_custom_fields_from_hubspot();
+        $custom_properties = CF7_Custom_Field_Manager::get_custom_fields_from_hubspot();
         
         // Merge custom properties with default ones
         $all_properties = array_merge($default_properties, array_keys($custom_properties));

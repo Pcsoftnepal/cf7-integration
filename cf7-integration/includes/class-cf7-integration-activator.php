@@ -2,8 +2,8 @@
 /**
  * Fired during plugin activation
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -16,7 +16,7 @@ if (!defined('WPINC')) {
  *
  * This class defines all code necessary to run during the plugin's activation.
  */
-class CF7_HubSpot_Activator {
+class CF7_Activator {
 
     /**
      * Activate the plugin

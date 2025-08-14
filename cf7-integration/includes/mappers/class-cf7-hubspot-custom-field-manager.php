@@ -2,8 +2,8 @@
 /** 
  * Class for managing custom HubSpot field mappings
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -12,9 +12,9 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_Custom_Field_Manager
+ * Class CF7_Custom_Field_Manager
  */
-class CF7_HubSpot_Custom_Field_Manager {
+class CF7_Custom_Field_Manager {
     
     /**
      * Initialize the class and set its properties
@@ -64,7 +64,7 @@ class CF7_HubSpot_Custom_Field_Manager {
      */
     public static function get_all_hubspot_properties() {
         // Combine default properties with custom fields
-        $default_properties = CF7_HubSpot_Data_Mapper::get_default_field_mappings();
+        $default_properties = CF7_Data_Mapper::get_default_field_mappings();
         $custom_properties = self::get_custom_fields_from_hubspot();
         
         // Merge custom properties with default ones

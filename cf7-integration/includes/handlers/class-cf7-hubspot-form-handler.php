@@ -2,8 +2,8 @@
 /** 
  * Class for handling Contact Form 7 form submissions
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -12,9 +12,9 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_Form_Handler
+ * Class CF7_Form_Handler
  */
-class CF7_HubSpot_Form_Handler {
+class CF7_Form_Handler {
 
     /**
      * Initialize the class and set its properties
@@ -50,7 +50,7 @@ class CF7_HubSpot_Form_Handler {
         $field_mappings = get_option('cf7_hubspot_field_mappings_' . $form_id, array());
         
         // Map form fields to HubSpot properties
-        $data_mapper = new CF7_HubSpot_Data_Mapper();
+        $data_mapper = new CF7_Data_Mapper();
         $hubspot_properties = $data_mapper->map_form_fields_to_hubspot_properties($form_data, $field_mappings);
         
         // Sanitize properties
@@ -67,7 +67,7 @@ class CF7_HubSpot_Form_Handler {
         }
         
         // Send data to HubSpot
-        $api_client = new CF7_HubSpot_API_Client();
+        $api_client = new CF7_API_Client();
         $result = $this->send_to_hubspot($hubspot_properties, $form_id);
         
         if (!$result['success']) {
@@ -83,8 +83,8 @@ class CF7_HubSpot_Form_Handler {
      * @return array
      */
     private function send_to_hubspot($properties, $form_id) {
-        $api_client = new CF7_HubSpot_API_Client();
-        $contact_list_id = CF7_HubSpot_Settings::get_contact_list_id();
+        $api_client = new CF7_API_Client();
+        $contact_list_id = CF7_Settings::get_contact_list_id();
         
         // Create or update contact
         $contact_result = $api_client->create_or_update_contact($properties);
@@ -144,8 +144,8 @@ class CF7_HubSpot_Form_Handler {
      * @return void
      */
     private function log_error($message) {
-        if (CF7_HubSpot_Settings::is_logging_enabled()) {
-            $logger = new CF7_HubSpot_Logger();
+        if (CF7_Settings::is_logging_enabled()) {
+            $logger = new CF7_Logger();
             $logger->log_error($message);
         }
     }

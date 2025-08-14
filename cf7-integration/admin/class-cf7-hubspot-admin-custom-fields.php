@@ -2,8 +2,8 @@
 /** 
  * Admin functionality for custom HubSpot field mappings
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/admin
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/admin
  * @author     Your Company <email@example.com>
  */
 

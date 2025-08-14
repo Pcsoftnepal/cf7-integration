@@ -2,8 +2,8 @@
 /**
  * Class for handling HubSpot OAuth authorization
  *
- * @package    CF7_HubSpot_Integration
- * @subpackage CF7_HubSpot_Integration/includes
+ * @package    CF7_Integration
+ * @subpackage CF7_Integration/includes
  * @author     Your Company <email@example.com>
  */
 
@@ -12,9 +12,9 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_HubSpot_OAuth
+ * Class CF7_OAuth
  */
-class CF7_HubSpot_OAuth {
+class CF7_OAuth {
     
     /**
      * HubSpot OAuth endpoints
@@ -155,6 +155,6 @@ class CF7_HubSpot_OAuth {
      * @return string
      */
     public static function get_redirect_uri() {
-        return admin_url('admin.php?page=cf7-hubspot-integration&oauth_callback=1');
+        return admin_url('admin.php?page=cf7-integration&oauth_callback=1');
     }
 }
