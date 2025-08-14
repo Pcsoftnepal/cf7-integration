@@ -131,15 +131,15 @@ class CF7_HubSpot_API_Client {
     /**
      * Add a contact to a HubSpot list
      *
-     * @param string $contact_id
+     * @param string $email
      * @param string $list_id
      * @return array
      */
-    public function add_contact_to_list($contact_id, $list_id) {
-        // For HubSpot v3 API, we should use the subscriptions endpoint correctly
-        $endpoint = '/marketing/v3/subscription-emails/' . $list_id . '/subscribers';
+    public function add_contact_to_list($email, $list_id) {
+        // For HubSpot v3 API, we need to use the correct endpoint
+        $endpoint = '/marketing/v3/subscriptions/contacts/' . $list_id . '/subscribers';
         $data = array(
-            'email' => $contact_id  // We expect contact_id to be the email address
+            'email' => $email
         );
         return $this->send_request($endpoint, $data, 'POST');
     }

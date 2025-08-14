@@ -51,6 +51,7 @@ class CF7_HubSpot_Integration {
         require_once CF7_HUBSPOT_INTEGRATION_PLUGIN_DIR . 'includes/api/class-cf7-hubspot-api-client.php';
         require_once CF7_HUBSPOT_INTEGRATION_PLUGIN_DIR . 'includes/handlers/class-cf7-hubspot-form-handler.php';
         require_once CF7_HUBSPOT_INTEGRATION_PLUGIN_DIR . 'includes/mappers/class-cf7-hubspot-data-mapper.php';
+        require_once CF7_HUBSPOT_INTEGRATION_PLUGIN_DIR . 'includes/mappers/class-cf7-hubspot-custom-field-manager.php';
         require_once CF7_HUBSPOT_INTEGRATION_PLUGIN_DIR . 'includes/logger/class-cf7-hubspot-logger.php';
         require_once CF7_HUBSPOT_INTEGRATION_PLUGIN_DIR . 'includes/settings/class-cf7-hubspot-settings.php';
     }
