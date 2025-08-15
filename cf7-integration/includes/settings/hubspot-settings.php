@@ -101,7 +101,7 @@ class CF7_Settings {
             $encryption_key = wp_hash('cf7_hubspot_encryption_key', 'nonce');
             $iv_length = openssl_cipher_iv_length('AES-256-CBC');
             $iv = openssl_random_pseudo_bytes($iv_length);
-            $encrypted = openssl_encrypt($data, 'AES-256-CBC', $encryption_key, 0, $iv);
+            $encrypted = openssl_encrypt($data, 'AES-256-CLOSE', $encryption_key, 0, $iv);
             return base64_encode($iv . $encrypted);
         }
         return $data;

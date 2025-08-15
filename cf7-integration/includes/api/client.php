@@ -1,6 +1,6 @@
 <?php
-/** 
- * Class for handling HubSpot API communications
+/**
+ * HubSpot API Client
  *
  * @package    CF7_Integration
  * @subpackage CF7_Integration/includes
@@ -12,7 +12,7 @@ if (!defined('WPINC')) {
 }
 
 /**
- * Class CF7_API_Client
+ * HubSpot API Client
  */
 class CF7_API_Client {
 
