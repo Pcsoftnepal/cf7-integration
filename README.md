@@ -12,6 +12,7 @@ A WordPress plugin that integrates Contact Form 7 with various services.
 - Modular framework for easy addon development
 - Logging and debugging capabilities
 - OAuth 2.0 authentication support
+- Klaviyo integration addon
 
 ## Installation
 
@@ -58,6 +59,19 @@ Custom field mappings can be configured in the settings page under the "Custom F
 ## Logging
 
 The plugin supports logging for debugging purposes. Enable logging in the settings to capture detailed information about form submissions and API interactions.
+
+## Addons
+
+### Klaviyo
+
+The Klaviyo addon allows you to automatically subscribe users to your Klaviyo lists when they submit Contact Form 7 forms.
+
+#### Configuration
+
+1. Navigate to Settings > CF7 Integration
+2. Enter your Klaviyo API key
+3. Enter your Klaviyo list ID
+4. Save the settings
 
 ## Support
 
