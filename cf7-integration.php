@@ -3,7 +3,7 @@
  * The plugin bootstrap file
  *
  * This file is read by WordPress to generate the plugin information in the plugin
- *  * @link              https://github.com/Pcsoftnepal/cf7-integration
+ * @link              https://github.com/Pcsoftnepal/cf7-integration
  * @since             1.0.0
  * @package           CF7_Integration
  *
@@ -12,7 +12,7 @@
  * Plugin URI:        https://github.com/Pcsoftnepal/cf7-integration
  * Description:       A WordPress plugin that integrates Contact Form 7 with various services.
  * Version:           1.0.0
- * Author:            Your Company
+ * Author:            PCSoftNepal
  * Author URI:        https://github.com/Pcsoftnepal
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -45,7 +45,7 @@ require_once CF7_INTEGRATION_PLUGIN_DIR . 'admin/addons/addon-management.php';
  * @since      1.0.0
  * @package    CF7_Integration
  * @subpackage CF7_Integration/includes
- * @author     Your Company <email@example.com>
+ * @author     PCSoftNepal <info@pcsoftnepal.com>
  */
 class CF7_Integration {
 
