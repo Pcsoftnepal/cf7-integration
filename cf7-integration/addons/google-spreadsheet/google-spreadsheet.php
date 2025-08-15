@@ -25,6 +25,9 @@ class CF7_Google_Spreadsheet_Integration {
     public function __construct() {
         // Hook into the main plugin initialization
         add_action('cf7_integration_init', array($this, 'init'));
+        
+        // Hook into admin menu to add settings page
+        add_action('admin_menu', array($this, 'add_settings_page'));
     }
     
     /**
@@ -47,16 +50,16 @@ class CF7_Google_Spreadsheet_Integration {
      */
     private function load_dependencies() {
         // Load the Google Sheets API client
-        require_once plugin_dir_path(__FILE__) . 'includes/class-google-sheets-api-client.php';
+        require_once plugin_dir_path(__FILE__) . 'includes/api-client.php';
         
         // Load the Google Sheets OAuth client
-        require_once plugin_dir_path(__FILE__) . 'includes/class-google-sheets-oauth.php';
+        require_once plugin_dir_path(__FILE__) . 'includes/oauth.php';
         
         // Load the Google Sheets data mapper
-        require_once plugin_dir_path(__FILE__) . 'includes/class-google-sheets-data-mapper.php';
+        require_once plugin_dir_path(__FILE__) . 'includes/data-mapper.php';
         
         // Load the Google Sheets form handler
-        require_once plugin_dir_path(__FILE__) . 'includes/class-google-sheets-form-handler.php';
+        require_once plugin_dir_path(__FILE__) . 'includes/form-handler.php';
     }
     
     /**
@@ -73,12 +76,38 @@ class CF7_Google_Spreadsheet_Integration {
     }
     
     /**
+     * Add settings page to admin menu
+     *
+     * @since    1.0.0
+     */
+    public function add_settings_page() {
+        add_submenu_page(
+            'wpcf7',
+            'Google Spreadsheet Settings',
+            'Google Spreadsheet Settings',
+            'manage_options',
+            'cf7-google-spreadsheet-settings',
+            'cf7_google_sheets_settings_page'
+        );
+    }
+    
+    /**
      * Register activation hook
      *
      * @since    1.0.0
      */
     public static function activate() {
         // Activation logic here
+        // Create default settings for Google Sheets
+        $default_settings = array(
+            'cf7_google_sheets_api_key' => '',
+            'cf7_google_sheets_enabled' => 'off',
+            'cf7_google_sheets_forms' => array(),
+        );
+        
+        foreach ($default_settings as $option => $value) {
+            add_option($option, $value);
+        }
     }
     
     /**
