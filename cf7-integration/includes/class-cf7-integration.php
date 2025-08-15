@@ -23,14 +23,6 @@ define('CF7_INTEGRATION_VERSION', '1.0.0');
  *
  * @package    CF7_Integration
  */
-
-/**
- * The core plugin class
- *
- * @since      1.0.0
- * @package    CF7_Integration
- * @author     PCSoftNepal <info@pcsoftnepal.com>
- */
 class CF7_Integration {
     
     /**
@@ -99,6 +91,13 @@ class CF7_Integration {
             'file' => plugin_dir_path(__FILE__) . 'addons/activecampaign/activecampaign.php',
             'description' => 'Send form submissions to ActiveCampaign'
         );
+        
+        // Add the Salesforce addon
+        $this->available_addons['salesforce'] = array(
+            'name' => 'Salesforce',
+            'file' => plugin_dir_path(__FILE__) . 'addons/salesforce/salesforce.php',
+            'description' => 'Send form submissions to Salesforce'
+        );
     }
 
     /**
@@ -160,6 +159,16 @@ class CF7_Integration {
             'manage_options',
             'cf7-google-spreadsheet-settings',
             'cf7_google_sheets_settings_page'
+        );
+        
+        // Add Salesforce settings page
+        add_submenu_page(
+            'wpcf7',
+            'Salesforce Settings',
+            'Salesforce Settings',
+            'manage_options',
+            'cf7-salesforce-settings',
+            'cf7_salesforce_settings_page'
         );
     }
 
