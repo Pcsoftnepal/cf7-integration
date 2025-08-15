@@ -44,11 +44,12 @@ class CF7_Google_Sheets_Form_Handler {
         // Get the Google Sheets configuration for this form
         $spreadsheet_id = isset($settings['forms'][$form_id]['spreadsheet_id']) ? $settings['forms'][$form_id]['spreadsheet_id'] : '';
         $range = isset($settings['forms'][$form_id]['range']) ? $settings['forms'][$form_id]['range'] : 'A1';
+        $access_token = isset($settings['access_token']) ? $settings['access_token'] : '';
         
         // Validate the configuration
-        if (empty($spreadsheet_id)) {
+        if (empty($spreadsheet_id) || empty($access_token)) {
             // Log error
-            error_log('Google Sheets integration error: Spreadsheet ID is missing for form ' . $form_id);
+            error_log('Google Sheets integration error: Spreadsheet ID or access token is missing for form ' . $form_id);
             return;
         }
         
@@ -73,7 +74,7 @@ class CF7_Google_Sheets_Form_Handler {
         $prepared_data = $data_mapper->prepare_data_for_sheets($mapped_data);
         
         // Send data to Google Sheets
-        $api_client = new CF7_Google_Sheets_API_Client($settings['api_key']);
+        $api_client = new CF7_Google_Sheets_API_Client($access_token);
         $response = $api_client->send_data($prepared_data, $spreadsheet_id, $range);
         
         // Log the response

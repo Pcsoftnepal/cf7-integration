@@ -18,13 +18,13 @@ if (!defined('WPINC')) {
 class CF7_Google_Sheets_API_Client {
     
     /**
-     * Google Sheets API key
+     * Google Sheets access token
      *
      * @since    1.0.0
      * @access   private
-     * @var      string    $api_key    Google Sheets API key
+     * @var      string    $access_token    Google Sheets access token
      */
-    private $api_key;
+    private $access_token;
 
     /**
      * Google Sheets REST API endpoint
@@ -39,10 +39,10 @@ class CF7_Google_Sheets_API_Client {
      * Initialize the class and set its properties.
      *
      * @since    1.0.0
-     * @param    string    $api_key    The API key for Google Sheets
+     * @param    string    $access_token    The access token for Google Sheets
      */
-    public function __construct($api_key) {
-        $this->api_key = $api_key;
+    public function __construct($access_token) {
+        $this->access_token = $access_token;
         $this->api_endpoint = 'https://sheets.googleapis.com/v4/spreadsheets';
     }
 
@@ -56,15 +56,15 @@ class CF7_Google_Sheets_API_Client {
      * @return   WP_Error|array    Response from Google Sheets API
      */
     public function send_data($data, $spreadsheet_id, $range) {
-        // Validate API key
-        if (empty($this->api_key)) {
-            return new WP_Error('missing_api_key', 'Google Sheets API key is missing.');
+        // Validate access token
+        if (empty($this->access_token)) {
+            return new WP_Error('missing_access_token', 'Google Sheets access token is missing.');
         }
 
         // Set up the request
         $args = array(
             'headers' => array(
-                'Authorization' => 'Bearer ' . $this->api_key,
+                'Authorization' => 'Bearer ' . $this->access_token,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ),
@@ -73,7 +73,7 @@ class CF7_Google_Sheets_API_Client {
         );
 
         // Send the request
-        $response = wp_remote_post($this->api_endpoint . '/' . $spreadsheet_id . '/values/' . $range . '?key=' . $this->api_key, $args);
+        $response = wp_remote_post($this->api_endpoint . '/' . $spreadsheet_id . '/values/' . $range, $args);
 
         // Handle errors
         if (is_wp_error($response)) {

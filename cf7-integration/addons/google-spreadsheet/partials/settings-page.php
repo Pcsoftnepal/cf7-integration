@@ -33,7 +33,6 @@ function cf7_google_sheets_settings_page() {
         
         // Sanitize and save the settings
         $settings = array();
-        $settings['api_key'] = sanitize_text_field($_POST['cf7_google_sheets_api_key']);
         $settings['enabled'] = isset($_POST['cf7_google_sheets_enabled']) ? 1 : 0;
         $settings['forms'] = array();
         
@@ -69,15 +68,17 @@ function cf7_google_sheets_settings_page() {
                         <label for="cf7_google_sheets_enabled">Enable integration with Google Sheets</label>
                     </td>
                 </tr>
-                
-                <tr>
-                    <th scope="row">Google Sheets API Key</th>
-                    <td>
-                        <input type="text" id="cf7_google_sheets_api_key" name="cf7_google_sheets_api_key" value="<?php echo esc_attr(isset($settings['api_key']) ? $settings['api_key'] : ''); ?>" class="regular-text" />
-                        <p class="description">Enter your Google Sheets API key here.</p>
-                    </td>
-                </tr>
             </table>
+            
+            <h2>Authentication</h2>
+            <p>To authenticate with Google Sheets, you need to set up OAuth 2.0 credentials:</p>
+            <ol>
+                <li>Go to the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a></li>
+                <li>Create a new project or select an existing one</li>
+                <li>Enable the Google Sheets API</li>
+                <li>Create OAuth 2.0 credentials (Client ID and Client Secret)</li>
+                <li>Set the redirect URI to: <code><?php echo admin_url('admin.php?page=cf7-google-spreadsheet-settings'); ?></code></li>
+            </ol>
             
             <h2>Contact Forms Configuration</h2>
             <p>Configure which forms should be sent to Google Sheets and their settings:</p>

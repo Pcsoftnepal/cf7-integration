@@ -49,6 +49,9 @@ class CF7_Google_Spreadsheet_Integration {
         // Load the Google Sheets API client
         require_once plugin_dir_path(__FILE__) . 'includes/class-google-sheets-api-client.php';
         
+        // Load the Google Sheets OAuth client
+        require_once plugin_dir_path(__FILE__) . 'includes/class-google-sheets-oauth.php';
+        
         // Load the Google Sheets data mapper
         require_once plugin_dir_path(__FILE__) . 'includes/class-google-sheets-data-mapper.php';
         
