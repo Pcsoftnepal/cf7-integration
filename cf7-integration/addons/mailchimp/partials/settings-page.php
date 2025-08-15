@@ -13,13 +13,24 @@ if (!defined('WPINC')) {
 }
 
 // Get current settings
-$mailchimp_api_key = get_option('cf7_mailchimp_api_key', '');
+$mailchimp_client_id = get_option('cf7_mailchimp_client_id', '');
+$mailchimp_client_secret = get_option('cf7_mailchimp_client_secret', '');
+$mailchimp_access_token = get_option('cf7_mailchimp_access_token', '');
 $mailchimp_list_id = get_option('cf7_mailchimp_list_id', '');
 $mailchimp_enable_logging = get_option('cf7_mailchimp_enable_logging', false);
+
+// Check if we have an access token and can connect to Mailchimp
+$connected = !empty($mailchimp_access_token);
 ?>
 
 <div class="wrap">
     <h1>Mailchimp Settings</h1>
+    
+    <?php if ($connected): ?>
+        <div class="notice notice-success">
+            <p>You are connected to Mailchimp.</p>
+        </div>
+    <?php endif; ?>
     
     <form method="post" action="options.php">
         <?php settings_fields('cf7_mailchimp_settings_group'); ?>
@@ -27,12 +38,36 @@ $mailchimp_enable_logging = get_option('cf7_mailchimp_enable_logging', false);
         
         <table class="form-table">
             <tr valign="top">
-                <th scope="row">Mailchimp API Key</th>
+                <th scope="row">Mailchimp Client ID</th>
                 <td>
-                    <input type="text" name="cf7_mailchimp_api_key" value="<?php echo esc_attr($mailchimp_api_key); ?>" />
-                    <p class="description">Enter your Mailchimp API key. You can find it in your Mailchimp account settings.</p>
+                    <input type="text" name="cf7_mailchimp_client_id" value="<?php echo esc_attr($mailchimp_client_id); ?>" />
+                    <p class="description">Enter your Mailchimp Client ID. You can find it in your Mailchimp app settings.</p>
                 </td>
             </tr>
+            
+            <tr valign="top">
+                <th scope="row">Mailchimp Client Secret</th>
+                <td>
+                    <input type="password" name="cf7_mailchimp_client_secret" value="<?php echo esc_attr($mailchimp_client_secret); ?>" />
+                    <p class="description">Enter your Mailchimp Client Secret. You can find it in your Mailchimp app settings.</p>
+                </td>
+            </tr>
+            
+            <?php if (!$connected): ?>
+            <tr valign="top">
+                <td colspan="2">
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=cf7-integration&connect_mailchimp=1')); ?>" class="button button-primary">Connect to Mailchimp</a>
+                    <p class="description">Click to connect to Mailchimp using OAuth 2.0</p>
+                </td>
+            </tr>
+            <?php else: ?>
+            <tr valign="top">
+                <td colspan="2">
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=cf7-integration&disconnect_mailchimp=1')); ?>" class="button">Disconnect from Mailchimp</a>
+                    <p class="description">Disconnect from Mailchimp</p>
+                </td>
+            </tr>
+            <?php endif; ?>
             
             <tr valign="top">
                 <th scope="row">Mailchimp List ID</th>

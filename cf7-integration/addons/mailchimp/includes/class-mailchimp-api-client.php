@@ -18,13 +18,13 @@ if (!defined('WPINC')) {
 class CF7_Mailchimp_API_Client {
     
     /**
-     * Mailchimp API key
+     * Mailchimp Access Token
      *
      * @since    1.0.0
      * @access   private
-     * @var      string    $api_key    Mailchimp API key
+     * @var      string    $access_token    Mailchimp Access Token
      */
-    private $api_key;
+    private $access_token;
 
     /**
      * Mailchimp REST API endpoint
@@ -39,25 +39,11 @@ class CF7_Mailchimp_API_Client {
      * Initialize the class and set its properties.
      *
      * @since    1.0.0
-     * @param    string    $api_key    The API key for Mailchimp
+     * @param    string    $access_token    The Access Token for Mailchimp
      */
-    public function __construct($api_key) {
-        $this->api_key = $api_key;
-        $this->api_endpoint = $this->get_api_endpoint();
-    }
-
-    /**
-     * Get the API endpoint based on the API key
-     *
-     * @since    1.0.0
-     * @return   string    API endpoint URL
-     */
-    private function get_api_endpoint() {
-        // Extract the server prefix from the API key
-        $key_parts = explode('-', $this->api_key);
-        $server_prefix = isset($key_parts[1]) ? $key_parts[1] : 'us1';
-        
-        return 'https://' . $server_prefix . '.api.mailchimp.com/3.0';
+    public function __construct($access_token) {
+        $this->access_token = $access_token;
+        $this->api_endpoint = 'https://us1.api.mailchimp.com/3.0';
     }
 
     /**
@@ -68,15 +54,15 @@ class CF7_Mailchimp_API_Client {
      * @return   WP_Error|array    Response from Mailchimp API
      */
     public function send_data($data) {
-        // Validate API key
-        if (empty($this->api_key)) {
-            return new WP_Error('missing_api_key', 'Mailchimp API key is missing.');
+        // Validate access token
+        if (empty($this->access_token)) {
+            return new WP_Error('missing_access_token', 'Mailchimp Access Token is missing.');
         }
 
         // Set up the request
         $args = array(
             'headers' => array(
-                'Authorization' => 'Basic ' . base64_encode('user:' . $this->api_key),
+                'Authorization' => 'Bearer ' . $this->access_token,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ),

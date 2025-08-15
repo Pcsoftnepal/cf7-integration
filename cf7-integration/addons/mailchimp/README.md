@@ -8,14 +8,15 @@ This addon enables seamless integration between Contact Form 7 and Mailchimp, al
 - Customizable field mapping
 - Support for merge fields (first name, last name, phone)
 - Logging and debugging capabilities
-- OAuth 2.0 authentication support (planned)
+- OAuth 2.0 authentication support
 
 ## Configuration
 
 1. Navigate to Settings > CF7 Integration
-2. Enter your Mailchimp API key
-3. Enter your Mailchimp list ID
-4. Save the settings
+2. Enter your Mailchimp Client ID and Client Secret
+3. Click "Connect to Mailchimp" to authenticate via OAuth
+4. Select your Mailchimp list ID
+5. Save the settings
 
 ## Field Mapping
 

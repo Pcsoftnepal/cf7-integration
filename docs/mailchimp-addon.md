@@ -8,18 +8,22 @@ The Mailchimp addon for Contact Form 7 Integration allows you to seamlessly conn
 
 1. Install and activate the Contact Form 7 Integration plugin
 2. Navigate to the Mailchimp addon settings page
-3. Enter your Mailchimp API key and list ID
-4. Configure field mappings as needed
+3. Enter your Mailchimp Client ID and Client Secret
+4. Connect to Mailchimp using OAuth 2.0
+5. Select your Mailchimp list ID
+6. Configure field mappings as needed
 
 ## Configuration
 
-### API Key
+### Client ID and Client Secret
 
-To get your Mailchimp API key:
+To get your Mailchimp API credentials:
 1. Log into your Mailchimp account
 2. Go to Account > Extras > API keys
-3. Click "Create Key" to generate a new API key
-4. Copy the key and paste it into the plugin settings
+3. Click "Create App" to create a new app
+4. Enter the app name and description
+5. In the "OAuth 2.0" section, enter the redirect URI: `http://yourdomain.com/wp-admin/admin.php?page=cf7-integration`
+6. Copy the Client ID and Client Secret and paste them into the plugin settings
 
 ### List ID
 
@@ -50,7 +54,7 @@ The plugin supports logging for debugging purposes. Enable logging in the settin
 
 ### Common Issues
 
-1. **Authentication Failed**: Make sure your API key is correct and has the necessary permissions
+1. **Authentication Failed**: Make sure your Client ID and Client Secret are correct
 2. **List Not Found**: Verify that your List ID is correct and the list exists in your Mailchimp account
 3. **Missing Email Address**: Ensure that the email field in your form is named `your-email`
 

@@ -38,14 +38,14 @@ class CF7_Mailchimp_Form_Handler {
         $form_id = $form->id();
         
         // Get settings for this form
-        $api_key = get_option('cf7_mailchimp_api_key', '');
+        $access_token = get_option('cf7_mailchimp_access_token', '');
         $list_id = get_option('cf7_mailchimp_list_id', '');
         $enable_logging = get_option('cf7_mailchimp_enable_logging', false);
         
-        // Skip if no API key or list ID
-        if (empty($api_key) || empty($list_id)) {
+        // Skip if no access token or list ID
+        if (empty($access_token) || empty($list_id)) {
             if ($enable_logging) {
-                CF7_Integration_Logger::log('Mailchimp integration disabled: Missing API key or list ID.', 'mailchimp');
+                CF7_Integration_Logger::log('Mailchimp integration disabled: Missing access token or list ID.', 'mailchimp');
             }
             return;
         }
@@ -74,7 +74,7 @@ class CF7_Mailchimp_Form_Handler {
         }
         
         // Send to Mailchimp
-        $api_client = new CF7_Mailchimp_API_Client($api_key);
+        $api_client = new CF7_Mailchimp_API_Client($access_token);
         $response = $api_client->subscribe_to_list($subscriber_data, $list_id);
         
         // Log response

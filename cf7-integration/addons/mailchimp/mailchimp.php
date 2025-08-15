@@ -46,6 +46,9 @@ class CF7_Mailchimp_Integration {
      * @since    1.0.0
      */
     private function load_dependencies() {
+        // Load the Mailchimp OAuth client
+        require_once plugin_dir_path(__FILE__) . 'includes/class-mailchimp-oauth.php';
+        
         // Load the Mailchimp API client
         require_once plugin_dir_path(__FILE__) . 'includes/class-mailchimp-api-client.php';
         
